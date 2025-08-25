@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MBC Cocktail Making Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background: #222; color: #fff; }
+    h1 { color: #ffcc00; }
+    .ingredients, .actions { margin: 20px; }
+    button { margin: 5px; padding: 10px 20px; border: none; border-radius: 8px; background: #ffcc00; color: #222; cursor: pointer; font-weight: bold; }
+    button:hover { background: #ffaa00; }
+    #glass { margin: 30px auto; width: 200px; height: 300px; border: 2px solid #fff; border-radius: 0 0 40px 40px; background: linear-gradient(to top, #333, #111); overflow: hidden; }
+    .liquid { width: 100%; position: absolute; bottom: 0; }
+    #result { margin-top: 20px; font-size: 18px; color: #0f0; }
+  </style>
+</head>
+<body>
+  <h1>🍸 MBC Cocktail Game</h1>
+  <p>Choose your ingredients and make your cocktail!</p>
+
+  <div class="ingredients">
+    <button onclick="addIngredient('Gin', '#66ccff')">Gin</button>
+    <button onclick="addIngredient('Rum', '#cc9966')">Rum</button>
+    <button onclick="addIngredient('Vodka', '#dddddd')">Vodka</button>
+    <button onclick="addIngredient('Whiskey', '#cc6600')">Whiskey</button>
+    <button onclick="addIngredient('Lime', '#99ff99')">Lime</button>
+    <button onclick="addIngredient('Cola', '#330000')">Cola</button>
+    <button onclick="addIngredient('Syrup', '#ff66cc')">Syrup</button>
+  </div>
+
+  <div id="glass"></div>
+
+  <div class="actions">
+    <button onclick="mixCocktail()">Mix Cocktail</button>
+    <button onclick="resetGlass()">Reset</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    let ingredients = [];
+
+    function addIngredient(name, color) {
+      ingredients.push(name);
+      let liquid = document.createElement("div");
+      liquid.className = "liquid";
+      liquid.style.height = "40px";
+      liquid.style.background = color;
+      liquid.style.position = "relative";
+      document.getElementById("glass").appendChild(liquid);
+    }
+
+    function mixCocktail() {
+      if (ingredients.length === 0) {
+        document.getElementById("result").innerText = "Please add ingredients!";
+        return;
+      }
+      let cocktailName = "Signature Mix";
+      if (ingredients.includes("Whiskey") && ingredients.includes("Cola") && ingredients.includes("Lime")) {
+        cocktailName = "Whiskey Coke";
+      } else if (ingredients.includes("Gin") && ingredients.includes("Lime")) {
+        cocktailName = "Gin Lime";
+      } else if (ingredients.includes("Rum") && ingredients.includes("Syrup") && ingredients.includes("Lime")) {
+        cocktailName = "Daiquiri";
+      }
+      document.getElementById("result").innerText = "You made: " + cocktailName + " 🍹";
+    }
+
+    function resetGlass() {
+      ingredients = [];
+      document.getElementById("glass").innerHTML = "";
+      document.getElementById("result").innerText = "";
+    }
+  </script>
+</body>
+</html>

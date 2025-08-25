@@ -1,0 +1,28 @@
+const cocktails = [
+  {
+    name: "Mojito",
+    base: "Rum",
+    ingredients: ["Rum", "Lime", "Syrup", "Soda"]
+  },
+  {
+    name: "Daiquiri",
+    base: "Rum",
+    ingredients: ["Rum", "Lime", "Syrup"]
+  },
+  {
+    name: "Gin Tonic",
+    base: "Gin",
+    ingredients: ["Gin", "Tonic"]
+  },
+  {
+    name: "Negroni",
+    base: "Gin",
+    ingredients: ["Gin", "Campari", "Vermouth"]
+  },
+  {
+    name: "Whiskey Coke",
+    base: "Whiskey",
+    ingredients: ["Whiskey", "Cola", "Lime"]
+  },
+  // Add more for Vodka, Tequila, Brandy, etc.
+];
